@@ -1,4 +1,4 @@
-# Importing the libraries
+# Importing the necessary libraries
 import sys
 import argparse
 import subprocess
