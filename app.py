@@ -24,8 +24,8 @@ def upload():
     vulnerability=form.vulnerability.data
     print(site,vulnerability)
     
-    # os.system('py temp.py '+site+' -v '+ vulnerability)
-    os.system('py temp.py -v Injection')
+    os.system('python3 temp.py '+site+' -v '+ vulnerability)
+    # os.system('python3 temp.py -v Injection')
     return redirect('/')
     
 

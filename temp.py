@@ -1345,14 +1345,14 @@ def get_parser():
                         help='Disable the idle loader/spinner.')
     parser.add_argument('target', nargs='?', metavar='URL', help='URL to scan.', default='', type=str)
     parser.add_argument('-v', '--vulnerability', 
-                        help='Which Vulnerability to choose?',choices=['Injection','Port Enumeration','Misconfiguration'])
+                        help='Which Vulnerability to choose?',choices=['Injection','Port-Enumeration','Misconfiguration'])
     return parser
 
 
 # Shuffling Scan Order (starts)
-scan_shuffle = list(zip(tool_names, tool_cmd, tool_resp, tool_status))
-random.shuffle(scan_shuffle)
-tool_names, tool_cmd, tool_resp, tool_status = zip(*scan_shuffle)
+#scan_shuffle = list(zip(tool_names, tool_cmd, tool_resp, tool_status))
+#random.shuffle(scan_shuffle)
+#tool_names, tool_cmd, tool_resp, tool_status = zip(*scan_shuffle)
 tool_checks = (len(tool_names) + len(tool_resp) + len(tool_status)) / 3 # Cross verification incase, breaks.
 tool_checks = round(tool_checks)
 # Shuffling Scan Order (ends)
@@ -1475,13 +1475,14 @@ elif args_namespace.target:
     cmds=[]
     if args_namespace.vulnerability == 'Injection':
         cmds=[0,1,2]
-    if args_namespace.vulnerability == 'Port Enumeration':
-        cmds=[3,4,5]
+    if args_namespace.vulnerability == 'Port-Enumeration':
+        cmds=[7,13,14,16, 17, 18, 19, 20, 41, 42, 43, 66,67,68,69,70,71,72,73, 75, 76, 78]
     if args_namespace.vulnerability == 'Misconfiguration':
         cmds=[6,7,8]
 
     while(tool < len(tool_names)):
         if tool not in cmds:
+            tool = tool + 1
             continue
 
         print("["+tool_status[tool][arg3]+tool_status[tool][arg4]+"] Deploying "+str(tool+1)+"/"+str(tool_checks)+" | "+bcolors.OKBLUE+tool_names[tool][arg2]+bcolors.ENDC,)
