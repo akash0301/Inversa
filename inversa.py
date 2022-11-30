@@ -449,7 +449,7 @@ tool_names = [
                 #73
                 ["nmap_full_ps_udp","Nmap - Performs a Full UDP Port Scan","nmap",1],
 
-                #74
+                #74upload
                 ["nmap_snmp","Nmap - Checks for SNMP Service","nmap",1],
 
                 #75
@@ -492,13 +492,15 @@ def get_parser():
     parser.add_argument('-n', '--nospinner', action='store_true', 
                         help='Disable the idle loader/spinner.')
     parser.add_argument('target', nargs='?', metavar='URL', help='URL to scan.', default='', type=str)
+    parser.add_argument('-v', '--vulnerability', 
+                        help='Which Vulnerability to choose?',choices=['Injection','Port-Enumeration','Misconfiguration'])
     return parser
 
 
 # Shuffling Scan Order (starts)
-scan_shuffle = list(zip(tool_names, tool_cmd, tool_resp, tool_status))
-random.shuffle(scan_shuffle)
-tool_names, tool_cmd, tool_resp, tool_status = zip(*scan_shuffle)
+# scan_shuffle = list(zip(tool_names, tool_cmd, tool_resp, tool_status))
+# random.shuffle(scan_shuffle)
+# tool_names, tool_cmd, tool_resp, tool_status = zip(*scan_shuffle)
 tool_checks = (len(tool_names) + len(tool_resp) + len(tool_status)) / 3 # Cross verification incase, breaks.
 tool_checks = round(tool_checks)
 # Shuffling Scan Order (ends)
@@ -616,8 +618,19 @@ elif args_namespace.target:
     print(bcolors.BG_ENDL_TXT+"[ Checking Available Security Scanning Tools Phase... Completed. ]"+bcolors.ENDC)
     print("\n")
     print(bcolors.BG_HEAD_TXT+"[ Preliminary Scan Phase Initiated... Loaded "+str(tool_checks)+" vulnerability checks. ]"+bcolors.ENDC)
-    #while (tool < 1):
+    
+    cmds=[]
+    if args_namespace.vulnerability == 'Injection':
+        cmds=[0,1,2]
+    if args_namespace.vulnerability == 'Port-Enumeration':
+        cmds=[7,13,14,16, 17, 18, 19, 20, 41, 42, 43, 66,67,68,69,70,71,72,73, 75, 76, 78]
+    if args_namespace.vulnerability == 'Misconfiguration':
+        cmds=[6,7,8]
+
     while(tool < len(tool_names)):
+        if tool not in cmds:
+            tool = tool + 1
+            continue
         print("["+tool_status[tool][arg3]+tool_status[tool][arg4]+"] Deploying "+str(tool+1)+"/"+str(tool_checks)+" | "+bcolors.OKBLUE+tool_names[tool][arg2]+bcolors.ENDC,)
         if tool_names[tool][arg4] == 0:
             print(bcolors.WARNING+"\nScanning Tool Unavailable. Skipping Test...\n"+bcolors.ENDC)
@@ -682,8 +695,8 @@ elif args_namespace.target:
 
     #################### Report & Documentation Phase ###########################
     date = subprocess.Popen(["date", "+%Y-%m-%d"],stdout=subprocess.PIPE).stdout.read()[:-1].decode("utf-8")
-    debuglog = "rs.dbg.%s.%s" % (target, date) 
-    vulreport = "rs.vul.%s.%s" % (target, date)
+    debuglog = "rs.dbg.%s.txt" % (target) 
+    vulreport = "rs.vul.%s.txt" % (target)
     print(bcolors.BG_HEAD_TXT+"[ Report Generation Phase Initiated. ]"+bcolors.ENDC)
     if len(rs_vul_list)==0:
         print("\t"+bcolors.OKGREEN+"No Vulnerabilities Detected."+bcolors.ENDC)
@@ -729,3 +742,5 @@ elif args_namespace.target:
 
     os.system('setterm -cursor on')
     os.system('rm /tmp/inversa_te* > /dev/null 2>&1') # Clearing previous scan files
+
+
