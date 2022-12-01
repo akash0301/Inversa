@@ -261,7 +261,7 @@ tool_names = [
                 ["dnsrecon","DNSRecon - Attempts Multiple Zone Transfers on Nameservers.","dnsrecon",1],
 
                 #11
-                ["fierce","Fierce - Attempts Zone Transfer [No Brute Forcing]","fierce",1],
+                # ["fierce","Fierce - Attempts Zone Transfer [No Brute Forcing]","fierce",1],
 
                 #12
                 ["dnswalk","DNSWalk - Attempts Zone Transfer.","dnswalk",1],
@@ -622,11 +622,11 @@ elif args_namespace.target:
     
     cmds=[]
     if args_namespace.vulnerability == 'Injection':
-        cmds=[30, 32, 51]
+        cmds=[29, 31, 50]
     if args_namespace.vulnerability == 'Port-Enumeration':
-        cmds=[7, 13, 14, 16, 17, 18, 19, 20, 41, 42, 43, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 78]
+        cmds=[7, 12, 13, 15, 16, 17, 18, 19, 40, 41, 42, 65, 66, 67, 68, 69, 70, 71, 72, 74, 75, 77]
     if args_namespace.vulnerability == 'Misconfiguration':
-        cmds=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 15, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 44, 45, 46, 47, 48, 49, 50, 53, 55, 57, 58, 59, 60 ,61 ,62 ,63, 64, 65, 74, 77, 79, 80]
+        cmds=[0,1,2,3,4,5,6,8,9,10,11,14,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,43,44,45,46,47,48,49,52,54,56,57,58,59,60,61,62,63,64,73,76,78,79]
 
     while(tool < len(tool_names)):
         if tool not in cmds:

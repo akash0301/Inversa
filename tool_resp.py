@@ -31,7 +31,7 @@ tool_resp   = [
                 ["Zone Transfer Successful using DNSRecon. Reconfigure DNS immediately.","h",10],
 
                 #11
-                ["Zone Transfer Successful using fierce. Reconfigure DNS immediately.","h",10],
+                # ["Zone Transfer Successful using fierce. Reconfigure DNS immediately.","h",10],
 
                 #12
                 ["Zone Transfer Successful using dnswalk. Reconfigure DNS immediately.","h",10],
