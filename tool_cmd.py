@@ -31,7 +31,7 @@ tool_cmd   = [
                 ["dnsrecon -d ",""],
 
                 #11
-                #["fierce -wordlist xxx -dns ",""],
+                ["fierce -wordlist xxx -dns ",""],
 
                 #12
                 ["dnswalk -d ","."],

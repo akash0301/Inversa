@@ -3,6 +3,20 @@ from wtforms import Form,StringField
 import os
 import time
 import subprocess
+import re
+import random
+from urllib.parse import urlsplit
+# from inversa import target
+
+
+def url_maker(url):
+    if not re.match(r'http(s?)\:', url):
+        url = 'http://' + url
+    parsed = urlsplit(url)
+    host = parsed.netloc
+    if host.startswith('www.'):
+        host = host[4:]
+    return host
 
 
 class params(Form):
@@ -33,13 +47,14 @@ def upload():
     print(site,vulnerability)
     
     os.system('python3 inversa.py '+site+' -v '+ vulnerability)
-    dict_s=site.split('.')
-    site=""
-    for i in range(1,len(dict_s)):
-        if i == 1:
-            site=site+dict_s[i]
-        else:
-            site=site+'.'+dict_s[i]
+    # dict_s=site.split('.')
+    # site=""
+    # for i in range(1,len(dict_s)):
+    #     if i == 1:
+    #         site=site+dict_s[i]
+    #     else:
+    #         site=site+'.'+dict_s[i]
+    site = url_maker(site)
     path="rs.vul."+site+'.txt'
     subprocess.call(('xdg-open', path))
 

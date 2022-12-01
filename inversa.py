@@ -261,7 +261,7 @@ tool_names = [
                 ["dnsrecon","DNSRecon - Attempts Multiple Zone Transfers on Nameservers.","dnsrecon",1],
 
                 #11
-                #["fierce","Fierce - Attempts Zone Transfer [No Brute Forcing]","fierce",1],
+                ["fierce","Fierce - Attempts Zone Transfer [No Brute Forcing]","fierce",1],
 
                 #12
                 ["dnswalk","DNSWalk - Attempts Zone Transfer.","dnswalk",1],
@@ -540,6 +540,7 @@ if len(sys.argv) == 1:
 
 args_namespace = get_parser().parse_args()
 
+
 if args_namespace.nospinner:
     spinner.disabled = True
 
@@ -573,7 +574,7 @@ elif args_namespace.update:
     sys.exit(1)
 
 elif args_namespace.target:
-
+    # print(args_namespace.target)
     target = url_maker(args_namespace.target)
     #target = args_namespace.target
     os.system('rm /tmp/inversa* > /dev/null 2>&1') # Clearing previous scan files
@@ -621,11 +622,11 @@ elif args_namespace.target:
     
     cmds=[]
     if args_namespace.vulnerability == 'Injection':
-        cmds=[0,1,2]
+        cmds=[30, 32, 51]
     if args_namespace.vulnerability == 'Port-Enumeration':
-        cmds=[7,13,14,16, 17, 18, 19, 20, 41, 42, 43, 66,67,68,69,70,71,72,73, 75, 76, 78]
+        cmds=[7, 13, 14, 16, 17, 18, 19, 20, 41, 42, 43, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 78]
     if args_namespace.vulnerability == 'Misconfiguration':
-        cmds=[6,7,8]
+        cmds=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 15, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 44, 45, 46, 47, 48, 49, 50, 53, 55, 57, 58, 59, 60 ,61 ,62 ,63, 64, 65, 74, 77, 79, 80]
 
     while(tool < len(tool_names)):
         if tool not in cmds:
@@ -697,6 +698,7 @@ elif args_namespace.target:
     date = subprocess.Popen(["date", "+%Y-%m-%d"],stdout=subprocess.PIPE).stdout.read()[:-1].decode("utf-8")
     debuglog = "rs.dbg.%s.txt" % (target) 
     vulreport = "rs.vul.%s.txt" % (target)
+    # print(args_namespace.target)
     print(bcolors.BG_HEAD_TXT+"[ Report Generation Phase Initiated. ]"+bcolors.ENDC)
     if len(rs_vul_list)==0:
         print("\t"+bcolors.OKGREEN+"No Vulnerabilities Detected."+bcolors.ENDC)

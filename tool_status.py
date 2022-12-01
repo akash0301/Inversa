@@ -57,7 +57,7 @@ tool_status = [
                 ["[+] Zone Transfer was successful!!",0,proc_low," < 20s","dnsreconzt",["Could not resolve domain"]],
 
                 #11
-                #["Whoah, it worked",0,proc_low," < 30s","fiercezt",["none"]],
+                ["Whoah, it worked",0,proc_low," < 30s","fiercezt",["none"]],
 
                 #12
                 ["0 errors",0,proc_low," < 35s","dnswalkzt",["!!!0 failures, 0 warnings, 3 errors."]],
