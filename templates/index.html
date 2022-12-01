@@ -1,20 +1,113 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+    <style>
+        .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+        }
+
+        /* Control the left side */
+        .left {
+        left: 0;
+        background-color: #111;
+        background: url(https://www.chitkara.edu.in/blogs/wp-content/uploads/2022/05/Cyber-Security.jpg) no-repeat;
+        background-size: cover;
+        height: calc(100vh - 80pxs);
+        }
+
+        /* Control the right side */
+        .right {
+        right: 0;
+        background-color: red;
+        background: url(https://s40424.pcdn.co/in/wp-content/uploads/2022/09/cybersecurity.jpg) no-repeat;
+            background-size: cover;
+            height: calc(100vh - 80pxs);
+        }
+        .form{
+            text-align: center;
+            background-color: black;
+            width:500px;
+            /* Center vertically and horizontally */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 40px;
+        }
+        .head1{
+            color: green;
+        }
+        .button{
+            width: 150px;
+            height: 70px;
+            background: black;
+            color: yellow;
+            font-size: 20px;
+        }
+        .text{
+          width: 50%;
+          background: lightblue;
+          padding: 10px;
+        }
+        .info{
+            background: url(https://s40424.pcdn.co/in/wp-content/uploads/2022/09/cybersecurity.jpg) no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: yellow;
+            width: 90%;
+            padding-left: 40px;
+        }
+        .project{
+            color:Red;
+            text-align: center;
+            font-size: 40px;
+        }
+
+    </style>
+</head>
 
 <body>
 
-    <div class="heading"> Detector </div> 
+        <div class="split left">
+            <div class="info">
+            <h1>Website Vulnerability Detector</h1> <br>
+            <h2>Check if your site is vulnerable aganist OWASP's Top vulnerabilities</h2>
+            <h2>Injection</h2>
+            <h2>Port-Enumeration</h2>
+            <h2>Misconfiguration</h2>
 
-    
-        <div class="input">
+            <h4>Enter Your website and select the vulnerability you want to check against.<br>
+                A detailed report will be opened for the tests for you to debug and understand.</h4>
+            </div>
+        </div>
+
+        <div class="split right">
+            <div class="project"><h1>Detector</h1></div>
+            <div class="form">
              <form action="upload" method="POST">   
                 <h1 class="head1"> Enter the website </h1> 
                 <input type="text" name="site" class="text" > <br> 
+
                 <h1 class="head1"> Select the Vulnerability </h1> 
-                <input type="text" name="vulnerability" class="text" > <br> <br> <br>
+                <select class="text" name="vulnerability">  
+                    <option value = "Injection" > Injection  </option>  
+                    <option value = "Port-Enumeration"> Port-Enumeration  </option>  
+                    <option value = "Misconfiguration"> Misconfiguration" </option>  
+                </select> <br> <br> <br>
+
                 <input type="submit" value="Detect" class="button"> 
             </form>
+            </div>
         </div>
     
 
