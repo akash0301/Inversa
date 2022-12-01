@@ -471,7 +471,10 @@ tool_names = [
                 ["whatweb","WhatWeb - Checks for X-XSS Protection Header","whatweb",1],
 
                 #81
-                ["amass","AMass - Brutes Domain for Subdomains","amass",1]
+                ["amass","AMass - Brutes Domain for Subdomains","amass",1],
+
+                #82
+                ["sqli_dec", "SQLi_Dec - Checks for SQL injection vulnerablities", "xsser", 1]
             ]
 
 
@@ -622,7 +625,7 @@ elif args_namespace.target:
     
     cmds=[]
     if args_namespace.vulnerability == 'Injection':
-        cmds=[29, 31, 50]
+        cmds=[29, 31, 50, 80]
     if args_namespace.vulnerability == 'Port-Enumeration':
         cmds=[7, 12, 13, 15, 16, 17, 18, 19, 40, 41, 42, 65, 66, 67, 68, 69, 70, 71, 72, 74, 75, 77]
     if args_namespace.vulnerability == 'Misconfiguration':

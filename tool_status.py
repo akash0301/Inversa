@@ -123,7 +123,8 @@ tool_status = [
                 ["FOUND: 0",1,proc_high," < 35m","dirb",["COULDNT RESOLVE HOST","FOUND: 0"]],
 
                 #33
-                ["Could not find any vulnerability!",1,proc_med," <  4m","xsser",["XSSer is not working propertly!","Could not find any vulnerability!"]],
+                # ["Could not find any vulnerability!",1,proc_med," <  4m","xsser",["XSSer is not working propertly!","Could not find any vulnerability!"]],
+                ["XSS FOUND!",0,proc_med," <  4m","xsser",["XSSer is not working propertly!","Could not find any vulnerability!"]],
 
                 #34
                 ["Occurrence ID",0,proc_low," < 45s","golism6",["Cannot resolve domain name"]],
@@ -267,9 +268,10 @@ tool_status = [
                 ["X-XSS-Protection[1",1,proc_med," < 3m","whatweb",["Timed out","Socket error","X-XSS-Protection[1"]],
 
                 #81
-                ["No names were discovered",1,proc_med," < 15m","amass",["The system was unable to build the pool of resolvers"]]
+                ["No names were discovered",1,proc_med," < 15m","amass",["The system was unable to build the pool of resolvers"]],
 
-
+                #82
+                ["SQL Injection vulnerability detected", 1, proc_low, "< 50s", "sqlis", ["Max retries exceeded with url"]]
 
             ]
 

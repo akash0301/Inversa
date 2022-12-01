@@ -97,7 +97,10 @@ tool_cmd   = [
                 ["dirb http://"," -fi"],
 
                 #33
-                ["xsser --all=http://",""],
+                # ["xsser --all=http://","--payload='<script>alert(XSS);</script>'"],
+                ["xsser -u 'http://","/search.php?test=query' -p 'searchFor=XSS&goButton=go' --payload='<script>alert(XSS);</script>'"],
+                # xsser -u 'https://www.google.com
+                
 
                 #34
                 ["golismero -e sslscan scan ",""],
@@ -241,5 +244,8 @@ tool_cmd   = [
                 ["whatweb "," -a 1"],
 
                 #81
-                ["amass enum -d ",""]
+                ["amass enum -d ",""],
+
+                #82
+                ["python3 sqliscanner.py http://", "/artists.php/?artist/=1"]
             ]

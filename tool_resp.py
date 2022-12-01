@@ -241,9 +241,10 @@ tool_resp   = [
                 ["X-XSS Protection is not Present","m",12],
 
                 #81
-                ["Found Subdomains with AMass","m",31]
+                ["Found Subdomains with AMass","m",31],
 
-
+                #82
+                ["SQLiS found SQLi vulnerabilities", "c", 39]
 
             ]
 
