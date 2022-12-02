@@ -271,7 +271,7 @@ tool_status = [
                 ["No names were discovered",1,proc_med," < 15m","amass",["The system was unable to build the pool of resolvers"]],
 
                 #82
-                ["SQL Injection vulnerability detected", 1, proc_low, "< 50s", "sqlis", ["Max retries exceeded with url"]]
+                ["SQL Injection vulnerability detected", 0, proc_low, "< 50s", "sqlis", ["Max retries exceeded with url"]]
 
             ]
 

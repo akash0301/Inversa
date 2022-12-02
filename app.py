@@ -56,8 +56,9 @@ def upload():
     #         site=site+'.'+dict_s[i]
     site = url_maker(site)
     path="rs.vul."+site+'.txt'
+    
     subprocess.call(('xdg-open', path))
-
+        
     return redirect('/')
 
     

@@ -247,5 +247,6 @@ tool_cmd   = [
                 ["amass enum -d ",""],
 
                 #82
-                ["python3 sqliscanner.py http://", "/artists.php/?artist/=1"]
+                # /home/kali/Desktop/sqli/SQLI-Scanner/
+                ["python3 sqliscanner.py http://", "/artists.php?artist=1"]
             ]

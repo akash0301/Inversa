@@ -581,6 +581,7 @@ elif args_namespace.target:
     target = url_maker(args_namespace.target)
     #target = args_namespace.target
     os.system('rm /tmp/inversa* > /dev/null 2>&1') # Clearing previous scan files
+    
     os.system('clear')
     os.system('setterm -cursor off')
     logo()
@@ -625,7 +626,8 @@ elif args_namespace.target:
     
     cmds=[]
     if args_namespace.vulnerability == 'Injection':
-        cmds=[29, 31, 50, 80]
+        # cmds=[29, 31, 50, 80]
+        cmds=[ 31, 50, 80]
     if args_namespace.vulnerability == 'Port-Enumeration':
         cmds=[7, 12, 13, 15, 16, 17, 18, 19, 40, 41, 42, 65, 66, 67, 68, 69, 70, 71, 72, 74, 75, 77]
     if args_namespace.vulnerability == 'Misconfiguration':
@@ -648,6 +650,7 @@ elif args_namespace.target:
         scan_start = time.time()
         temp_file = "/tmp/inversa_temp_"+tool_names[tool][arg1]
         cmd = tool_cmd[tool][arg1]+target+tool_cmd[tool][arg2]+" > "+temp_file+" 2>&1"
+        # print(cmd)
 
         try:
             subprocess.check_output(cmd, shell=True)
@@ -701,9 +704,13 @@ elif args_namespace.target:
     date = subprocess.Popen(["date", "+%Y-%m-%d"],stdout=subprocess.PIPE).stdout.read()[:-1].decode("utf-8")
     debuglog = "rs.dbg.%s.txt" % (target) 
     vulreport = "rs.vul.%s.txt" % (target)
+    # os.system('rm  vulreport > /dev/null 2>&1')
+    # os.system('rm  > /dev/null 2>&1')
     # print(args_namespace.target)
     print(bcolors.BG_HEAD_TXT+"[ Report Generation Phase Initiated. ]"+bcolors.ENDC)
     if len(rs_vul_list)==0:
+        with open(vulreport, "a") as report:
+            report.write("No Vulnerabilities Detected")
         print("\t"+bcolors.OKGREEN+"No Vulnerabilities Detected."+bcolors.ENDC)
     else:
         with open(vulreport, "a") as report:
