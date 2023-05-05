@@ -17,9 +17,14 @@ and also created a parser to parse through the output of the tools that are exec
 map that to the severity of the vulnerability and provide proper remediation.
 
 To Run the application:
+
 1 Clone the Repo
+
 2 Go to project directory in terminal
+
 3 flask run
+
 4 Enter the target site and vulnerability name.
+
 5 Get the results 
 
